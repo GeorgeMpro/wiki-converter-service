@@ -1,0 +1,97 @@
+package processor;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.attribute.FileTime;
+import java.util.Collections;
+import java.util.List;
+
+import static helper.TestFileHelper.*;
+import static helper.TestFileHelper.RESOURCES_FILES_INPUT;
+import static helper.TestFileHelper.RESOURCES_FILES_OUTPUT;
+import static org.junit.jupiter.api.Assertions.*;
+
+class NewFileUtilityByFileTimeTest {
+
+    private String name = "test-file";
+//    private File testFile = new File(String.format("%1s %2s%d.xml", RESOURCES_FILES_INPUT, name, 1));
+//    private File testFile2 = new File(String.format("%1s %2s%d.xml", RESOURCES_FILES_INPUT, name, 2));
+
+    private FileTime latestModifiedFileDateInDirectory;
+    private List<FileTime> existingFilesTimeList;
+
+    private NewFileUtility utility;
+
+
+    @BeforeEach
+    void setUp() throws IOException {
+        cleanFileDirectory(RESOURCES_FILES_INPUT);
+        cleanFileDirectory(RESOURCES_FILES_OUTPUT);
+        utility = new NewFileUtilityByFileTime();
+        latestModifiedFileDateInDirectory = utility.getLastModifiedFileTimeInDirectory(utility.getFileTimes(RESOURCES_FILES_INPUT, this.getClass()));
+        existingFilesTimeList = utility.getFileTimes(RESOURCES_FILES_INPUT, this.getClass());
+    }
+
+    @Test
+    void getListOfModificationTimesInDirectory() {
+        assertNotNull(existingFilesTimeList);
+        assertNotEquals(Collections.emptyList(), existingFilesTimeList);
+        assertTrue(existingFilesTimeList.size() > 0);
+    }
+
+    @Test
+    void setLastModifiedFileDateInDirectory() throws Exception {
+        FileTime lastModifiedDate = utility.getLastModifiedFileTimeInDirectory(utility.getFileTimes(RESOURCES_FILES_INPUT, this.getClass()));
+
+        assertNotNull(lastModifiedDate);
+        assertTrue(lastModifiedDate.toMillis() > 0);
+    }
+
+    @Test
+    void getLatestFilesInDirectory() throws Exception {
+        createTestFiles(2, name);
+        List<File> newFiles = utility.getNewFiles(RESOURCES_FILES_INPUT);
+
+        assertEquals(2, newFiles.size(), "Should contain 2 files newer then the last modified date");
+        for (File file : newFiles) {
+            long fileModificationDate = file.lastModified();
+            assertTrue(fileModificationDate > latestModifiedFileDateInDirectory.toMillis(), "this file modification date should be newer than supplied date");
+        }
+    }
+
+    @Test
+    void setLastModifiedDateFieldFromDirectory() {
+        FileTime lastModifiedTime = utility.getTime(RESOURCES_FILES_INPUT);
+
+        assertNotNull(lastModifiedTime);
+    }
+
+    @Test
+    void whenInvalidDirectoryName_theThrowException() {
+        assertThrows(NullPointerException.class, () -> utility.updateTimeToLatestInDirectory(null));
+    }
+
+    @Test
+    void whenCannotGetDate_thenSetDefaultDateValue() {
+        FileTime lastModifiedTime = utility.getTime(RESOURCES_FILES_INPUT);
+
+        assertNotNull(lastModifiedTime, "should return current system time instead of null");
+    }
+
+    @Test
+    void whenNoNewFilesWereAddedReturnFalse() throws IOException {
+        assertFalse(utility.hasNewFiles(RESOURCES_FILES_INPUT), "should not find new files after getting the latest time");
+    }
+
+    @Test
+    void whenNewFilesThenReturnsTrue() throws IOException {
+        utility.updateTimeToLatestInDirectory(RESOURCES_FILES_INPUT);
+        createTestFiles(1, name);
+
+        boolean hasNew = utility.hasNewFiles(RESOURCES_FILES_INPUT);
+        assertTrue(hasNew, "the directory should contain newly modified files which are recognizable by the flag's method");
+    }
+}

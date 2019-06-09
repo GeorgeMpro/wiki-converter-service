@@ -1,0 +1,68 @@
+May 16, 2019 10:35:58 AM log.LoggingUtility logError
+WARNING: ParseError at [row,col]:[1,1]
+Message: Premature end of file.
+javax.xml.stream.XMLStreamException: ParseError at [row,col]:[1,1]
+Message: Premature end of file.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/com.sun.xml.internal.stream.XMLEventReaderImpl.peek(XMLEventReaderImpl.java:276)
+	at parser.XmlToWikiParser.parseToWikiText(XmlToWikiParser.java:43)
+	at parser.XmlToWikiParser.writeToWikiFormat(XmlToWikiParser.java:28)
+	at writer.XmlToWikiWriter.readFileAndWriteToWikiFile(XmlToWikiWriter.java:53)
+	at writer.XmlToWikiWriter.readInputDirectoryAndWriteToWikiDirectory(XmlToWikiWriter.java:29)
+	at WikiConverterService.main(WikiConverterService.java:36)
+
+May 16, 2019 10:35:58 AM log.LoggingUtility logError
+WARNING: ParseError at [row,col]:[1,1]
+Message: Premature end of file.
+javax.xml.stream.XMLStreamException: ParseError at [row,col]:[1,1]
+Message: Premature end of file.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/com.sun.xml.internal.stream.XMLEventReaderImpl.peek(XMLEventReaderImpl.java:276)
+	at parser.XmlToWikiParser.parseToWikiText(XmlToWikiParser.java:43)
+	at parser.XmlToWikiParser.writeToWikiFormat(XmlToWikiParser.java:28)
+	at writer.XmlToWikiWriter.readFileAndWriteToWikiFile(XmlToWikiWriter.java:53)
+	at writer.XmlToWikiWriter.readInputDirectoryAndWriteToWikiDirectory(XmlToWikiWriter.java:29)
+	at WikiConverterService.main(WikiConverterService.java:36)
+
+May 16, 2019 10:36:24 AM log.LoggingUtility logError
+WARNING: ParseError at [row,col]:[1,1]
+Message: Premature end of file.
+javax.xml.stream.XMLStreamException: ParseError at [row,col]:[1,1]
+Message: Premature end of file.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/com.sun.xml.internal.stream.XMLEventReaderImpl.peek(XMLEventReaderImpl.java:276)
+	at parser.XmlToWikiParser.parseToWikiText(XmlToWikiParser.java:43)
+	at parser.XmlToWikiParser.writeToWikiFormat(XmlToWikiParser.java:28)
+	at writer.XmlToWikiWriter.readFileAndWriteToWikiFile(XmlToWikiWriter.java:53)
+	at writer.XmlToWikiWriter.writeAllNewFilesToOutput(XmlToWikiWriter.java:46)
+	at WikiConverterService.processNewFiles(WikiConverterService.java:85)
+	at WikiConverterService.checkForNewlyAddedFiles(WikiConverterService.java:52)
+	at WikiConverterService.checkForNew(WikiConverterService.java:47)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.checkForNew(WikiConverterService.java:48)
+	at WikiConverterService.main(WikiConverterService.java:38)
+
